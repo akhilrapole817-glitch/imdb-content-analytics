@@ -1,0 +1,11 @@
+version: 2
+sources:
+  - name: imdb
+    schema: raw
+    description: IMDb non-commercial datasets loaded by scripts/load_imdb.py
+    tables:
+      - name: title_basics
+      - name: title_ratings
+      - name: title_principals
+      - name: title_episode
+      - name: name_basics

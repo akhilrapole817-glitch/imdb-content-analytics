@@ -1,0 +1,10 @@
+tconst	titleType	primaryTitle	originalTitle	isAdult	startYear	endYear	runtimeMinutes	genres
+tt9000001	movie	Harbor Lights	Harbor Lights	0	2018	\N	112	Drama,Romance
+tt9000002	movie	Red Circuit	Red Circuit	0	2021	\N	98	Action,Thriller
+tt9000003	tvSeries	Night Shift Desk	Night Shift Desk	0	2019	2023	44	Drama,Crime
+tt9000004	tvEpisode	Pilot	Pilot	0	2019	\N	46	Drama,Crime
+tt9000005	tvEpisode	Long Night	Long Night	0	2019	\N	43	Drama,Crime
+tt9000006	tvEpisode	Return	Return	0	2020	\N	45	Drama,Crime
+tt9000007	tvSeries	Kitchen Clash	Kitchen Clash	0	2022	\N	\N	Reality-TV
+tt9000008	movie	Quiet Orbit	Quiet Orbit	0	2015	\N	\N	Sci-Fi
+tt9000009	tvMiniSeries	The Ledger	The Ledger	0	2024	2024	52	Drama,History

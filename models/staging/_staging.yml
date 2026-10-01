@@ -1,0 +1,18 @@
+version: 2
+models:
+  - name: stg_titles
+    columns:
+      - name: title_id
+        data_tests: [unique, not_null]
+  - name: stg_ratings
+    columns:
+      - name: title_id
+        data_tests: [unique, not_null]
+  - name: stg_talent
+    columns:
+      - name: talent_id
+        data_tests: [unique, not_null]
+  - name: stg_episodes
+    columns:
+      - name: episode_id
+        data_tests: [unique, not_null]

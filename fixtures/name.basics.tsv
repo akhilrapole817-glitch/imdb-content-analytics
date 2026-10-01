@@ -1,0 +1,5 @@
+nconst	primaryName	birthYear	deathYear	primaryProfession	knownForTitles
+nm9000001	Ava Linden	1988	\N	actress,producer	tt9000001,tt9000003
+nm9000002	Theo Marsh	1975	\N	director,writer	tt9000001,tt9000002
+nm9000003	Jonah Price	1990	\N	actor	tt9000002,tt9000009
+nm9000004	Lena Okafor	1981	\N	producer,writer	tt9000003,tt9000009

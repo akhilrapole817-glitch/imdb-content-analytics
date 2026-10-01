@@ -1,0 +1,9 @@
+tconst	ordering	nconst	category	job	characters
+tt9000001	1	nm9000001	actress	\N	["Mara"]
+tt9000001	2	nm9000002	director	\N	\N
+tt9000002	1	nm9000003	actor	\N	["Cole"]
+tt9000002	2	nm9000002	director	\N	\N
+tt9000003	1	nm9000001	actress	\N	["Det. Ruiz"]
+tt9000003	2	nm9000004	producer	executive producer	\N
+tt9000009	1	nm9000003	actor	\N	["Hale"]
+tt9000009	2	nm9000004	writer	creator	\N

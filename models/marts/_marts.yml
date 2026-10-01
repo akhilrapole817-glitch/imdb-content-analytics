@@ -1,0 +1,108 @@
+version: 2
+models:
+  - name: dim_title
+    description: One row per title with format, decade, rating, votes, and vote-weighted rating.
+    columns:
+      - name: title_id
+        data_tests: [unique, not_null]
+      - name: content_format
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Film', 'Series', 'Episode', 'Other']
+  - name: dim_talent
+    columns:
+      - name: talent_id
+        data_tests: [unique, not_null]
+  - name: bridge_title_genre
+    columns:
+      - name: title_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_title')
+                field: title_id
+  - name: bridge_title_talent
+    columns:
+      - name: talent_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_talent')
+                field: talent_id
+  - name: fct_episode_ratings
+    columns:
+      - name: episode_id
+        data_tests: [unique, not_null]
+      - name: series_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_title')
+                field: title_id
+  - name: mart_series_performance
+    columns:
+      - name: series_id
+        data_tests: [unique, not_null]
+
+semantic_models:
+  - name: titles
+    description: Title-level content performance for the semantic layer.
+    model: ref('dim_title')
+    defaults:
+      agg_time_dimension: release_date
+    entities:
+      - name: title
+        type: primary
+        expr: title_id
+    dimensions:
+      - name: release_date
+        type: time
+        expr: make_date(start_year, 1, 1)
+        type_params:
+          time_granularity: year
+      - name: content_format
+        type: categorical
+      - name: title_type
+        type: categorical
+    measures:
+      - name: title_count
+        agg: count
+        expr: title_id
+      - name: total_votes
+        agg: sum
+        expr: num_votes
+      - name: rating_sum
+        agg: sum
+        expr: average_rating
+      - name: rated_title_count
+        agg: count
+        expr: average_rating
+
+metrics:
+  - name: titles_released
+    label: Titles released
+    type: simple
+    type_params:
+      measure: title_count
+  - name: audience_votes
+    label: Audience votes
+    type: simple
+    type_params:
+      measure: total_votes
+  - name: rating_total
+    label: Rating total
+    type: simple
+    type_params:
+      measure: rating_sum
+  - name: rated_titles
+    label: Rated titles
+    type: simple
+    type_params:
+      measure: rated_title_count
+  - name: avg_rating
+    label: Average rating
+    type: ratio
+    type_params:
+      numerator: rating_total
+      denominator: rated_titles
